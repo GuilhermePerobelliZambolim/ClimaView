@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=M+PLUS+Code+Latin:wght@100..700&family=Sen:wght@400..800&display=swap");
+@import "tailwindcss";
+
+* {
+  font-family: "Sen", sans-serif;
+}
+
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background: linear-gradient(
+    125deg,
+    #0b1d3a,
+    #123e68,
+    #176b87,
+    #254b78,
+    #221742
+  );
+
+  background-size: 300% 300%;
+  animation: skyAnimation 30s ease infinite;
+}
+
+@keyframes skyAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+}
