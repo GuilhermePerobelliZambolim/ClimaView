@@ -1,7 +1,9 @@
-function Card() {
+import type { CardProps } from "../types";
+
+const Card = ({ cidade }: CardProps) => {
   return (
     <div className="w-full max-w-[650px] mx-auto p-4 rounded-xl border border-[#9dd9e8] bg-[#d5f0f5] text-center shadow-lg">
-      <h2 className="text-5xl font-bold text-[#183448]">Rancharia</h2>
+      <h2 className="text-5xl font-bold text-[#183448]">{cidade && cidade.name}</h2>
 
       <div className="flex items-center justify-center gap-2 mt-3">
         <span className="text-4xl">🌥️</span>
@@ -21,3 +23,4 @@ function Card() {
 }
 
 export default Card;
+
