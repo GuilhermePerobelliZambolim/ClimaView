@@ -87,7 +87,8 @@ const Header = ({ onCidadeEncontrada }: HeaderProps) => {
                   setModalAberto(false);
                 }}
               >
-                Cidade: {cidade.name} - País: {cidade.country} - Região ou Estado: {cidade.admin1}
+                Cidade: {cidade.name} - País: {cidade.country} - Região ou
+                Estado: {cidade.admin1}
               </button>
             ))}
 

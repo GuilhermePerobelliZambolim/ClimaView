@@ -6,15 +6,46 @@ import Header from "./components/Header";
 import Card from "./components/Card";
 import Aside from "./components/Aside";
 import Footer from "./components/Footer";
-import type { Cidade } from "./types";
+import { obterCondicaoClimatica } from "./weatherUtils";
+import type { Cidade, DadosMeteorologicos } from "./types";
 
 function App() {
   const [cidadeSelecionada, setCidadeSelecionada] = useState<Cidade | null>(
     null,
   );
 
-  function atualizarCidade(novaCidade: Cidade) {
+  const [dadosMeteorologicos, setDadosMeteorologicos] =
+    useState<DadosMeteorologicos | null>(null);
+
+  async function atualizarCidade(novaCidade: Cidade) {
     setCidadeSelecionada(novaCidade);
+
+    try {
+      const parametros = new URLSearchParams({
+        latitude: String(novaCidade.latitude),
+        longitude: String(novaCidade.longitude),
+        timezone: "auto",
+        forecast_days: "6",
+        current:
+          "temperature_2m,apparent_temperature,relative_humidity_2m,pressure_msl,weather_code",
+        daily: "temperature_2m_min,temperature_2m_max,weather_code",
+      });
+
+      const enderecoBase = "https://api.open-meteo.com/v1/forecast";
+      const url = `${enderecoBase}?${parametros.toString()}`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Erro HTTP: ${response.status}`);
+      }
+
+      const dados = await response.json();
+      setDadosMeteorologicos(dados);
+      console.log(dados);
+      const condicao = obterCondicaoClimatica(dados.current.weather_code);
+      console.log(condicao);
+    } catch (erro) {
+      console.log("Erro ao buscar informações meteorológicas:", erro);
+    }
   }
 
   return (
