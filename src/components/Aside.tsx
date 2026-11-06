@@ -9,10 +9,15 @@ const Aside = ({
 }: PrevisaoDia) => {
   const condicaoClima = obterCondicaoClimatica(cod_climatico);
 
-  const dataFormatada = new Date(data).toLocaleDateString("pt-BR", {
-    weekday: "long",
-    day: "2-digit",
-  });
+  const [ano, mes, dia] = data.split("-").map(Number);
+
+  const dataFormatada = new Date(ano, mes - 1, dia).toLocaleDateString(
+    "pt-BR",
+    {
+      weekday: "long",
+      day: "2-digit",
+    },
+  );
 
   return (
     <div className="flex justify-center gap-2 mt-6">

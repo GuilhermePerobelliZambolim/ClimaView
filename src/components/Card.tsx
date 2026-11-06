@@ -1,5 +1,4 @@
 import type { CardProps } from "../types";
-import type { CondicaoClimatica } from "../weatherUtils";
 
 const Card = ({ cidade, dados, condicao }: CardProps) => {
   const agora = new Date();
