@@ -10,6 +10,32 @@ function Footer() {
       <p className="text-xs text-[#9bb8cc] mt-4">
         © 2026 ClimaView. Todos os direitos reservados.
       </p>
+
+      <p className="text-xs text-[#9bb8cc] mt-3">
+        Dados meteorológicos fornecidos por{" "}
+        <a
+          href="https://open-meteo.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-white transition-colors"
+        >
+          Open-Meteo
+        </a>
+        .
+      </p>
+
+      <p className="text-xs text-[#9bb8cc] mt-2">
+        Dados de localização fornecidos por{" "}
+        <a
+          href="https://www.geonames.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-white transition-colors"
+        >
+          GeoNames
+        </a>{" "}
+        via Open-Meteo.
+      </p>
     </footer>
   );
 }

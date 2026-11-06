@@ -1,3 +1,5 @@
+import type { CondicaoClimatica } from "./weatherUtils";
+
 export type Cidade = {
   name: string;
   country: string;
@@ -8,6 +10,8 @@ export type Cidade = {
 
 export type CardProps = {
   cidade: Cidade | null;
+  dados: DadosMeteorologicos | null;
+  condicao: CondicaoClimatica | null;
 };
 
 export type DadosMeteorologicos = {
@@ -19,9 +23,20 @@ export type DadosMeteorologicos = {
     pressure_msl: number;
   };
   daily: {
-    time: string[],
-    temperature_2m_min: number[],
-    temperature_2m_max: number[],
-    weather_code: number[]
-  }
+    time: string[];
+    temperature_2m_min: number[];
+    temperature_2m_max: number[];
+    weather_code: number[];
+  };
+};
+
+export type AsideProps = {
+  daily: DadosMeteorologicos["daily"];
+};
+
+export type PrevisaoDia = {
+  data: string;
+  temperatura_min: number;
+  temperatura_max: number;
+  cod_climatico: number;
 };
